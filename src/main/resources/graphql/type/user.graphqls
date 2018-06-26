@@ -1,0 +1,13 @@
+type Users {
+    id: ID!
+    profilename: String!
+    email: String!
+    password: String!
+    extraaddon: String!
+    gender: String!
+    firstName: String!
+    lastName: String!
+    profilePic: String!
+}
+
+
