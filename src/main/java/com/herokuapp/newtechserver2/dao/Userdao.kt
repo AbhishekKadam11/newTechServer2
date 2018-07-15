@@ -74,11 +74,7 @@ class UserDao(
 //                        .setSubject(id)
 //                     //   .setExpiration(java.util.Date(java.util.Date().time + java.util.concurrent.TimeUnit.HOURS.toMillis(expiration)))
 //                        .signWith(io.jsonwebtoken.SignatureAlgorithm.HS256, secret).compact()
-//                val token = Jwts.builder()
-////                        .setSubject((auth.getPrincipal() as Users).getUsername())
-////                        .setExpiration(Date(System.currentTimeMillis() + EXPIRATION_TIME))
-//                        .signWith(SignatureAlgorithm.HS512, SECRET)
-//                        .compact()
+
 //        }
 
 
