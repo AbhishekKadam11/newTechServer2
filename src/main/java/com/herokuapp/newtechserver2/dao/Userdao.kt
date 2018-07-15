@@ -2,10 +2,14 @@ package com.herokuapp.newtechserver2.dao
 
 import com.herokuapp.newtechserver2.Newtechserver2Application
 import com.herokuapp.newtechserver2.data.Users
+//import com.herokuapp.newtechserver2.service.TokenService
 import com.herokuapp.newtechserver2.repository.UserRepository
 import org.springframework.stereotype.Component
 import org.slf4j.LoggerFactory
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+
+
 
 
 @Component
@@ -13,6 +17,13 @@ class UserDao(
         private val userRepository: UserRepository
 ) {
 
+
+
+
+
+        private val expiration: Long = 100L
+        private val secret = "AbhishekIsAwesome"
+        private val header = "Authorization"
         private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
 
         fun getUserById(id: String) =
@@ -45,5 +56,30 @@ class UserDao(
 //                val encoder = BCryptPasswordEncoder()
 //                return encoder.matches(password, hashedPassword)
 //        }
+
+        fun createUser(email: String, password: String, profilename: String): Users? {
+                val hashedpassword = encryptPassword(password)
+                val result = userRepository.save(Users(email = email, password = hashedpassword, profilename = profilename))
+                val id = result.id
+            //    val jwt = TokenService.createToken(id)
+                logger.info(result.toString());
+                return result;
+        }
+
+   //     fun createJwt(id: String?): String {
+//                val claims = HashMap<String, Any>()
+//                claims.put("id", id!!)
+//                return io.jsonwebtoken.Jwts.builder()
+//                        .setClaims(claims)
+//                        .setSubject(id)
+//                     //   .setExpiration(java.util.Date(java.util.Date().time + java.util.concurrent.TimeUnit.HOURS.toMillis(expiration)))
+//                        .signWith(io.jsonwebtoken.SignatureAlgorithm.HS256, secret).compact()
+//                val token = Jwts.builder()
+////                        .setSubject((auth.getPrincipal() as Users).getUsername())
+////                        .setExpiration(Date(System.currentTimeMillis() + EXPIRATION_TIME))
+//                        .signWith(SignatureAlgorithm.HS512, SECRET)
+//                        .compact()
+//        }
+
 
 }

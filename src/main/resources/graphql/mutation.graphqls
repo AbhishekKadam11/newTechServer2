@@ -1,0 +1,4 @@
+type Mutation {
+   # Creates users
+    signup(input: UserInput!): Users!
+}

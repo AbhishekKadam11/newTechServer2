@@ -1,8 +1,5 @@
-type Users {
-    id: ID!
+input UserInput {
     email: String!
     password: String!
     profilename: String!
 }
-
-
