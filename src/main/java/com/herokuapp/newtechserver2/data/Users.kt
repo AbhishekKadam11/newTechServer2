@@ -22,7 +22,8 @@ data class Users (
         @Column(nullable = true)
         val lastName: String? = null,
         @Column(nullable = true)
-        val profilePic: String? = null
+        val profilePic: String? = null,
+        var token: String? = null
 
 )
 

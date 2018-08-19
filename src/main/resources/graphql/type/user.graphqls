@@ -3,6 +3,7 @@ type Users {
     email: String!
     password: String!
     profilename: String!
+    token: String!
 }
 
 
