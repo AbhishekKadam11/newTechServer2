@@ -1,6 +1,7 @@
 package com.herokuapp.newtechserver2.data
 
 import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import java.util.*
 import javax.persistence.Column
 import javax.persistence.Id
@@ -24,6 +25,10 @@ data class Users (
         @Column(nullable = true)
         val profilePic: String? = null,
         var token: String? = null
-
 )
 
+//fun validatePassword(password: String): Boolean {
+////        val pass = Users("password")
+////        val isValid = BCryptPasswordEncoder().matches(password, Users)
+////        return isValid
+//}

@@ -12,10 +12,10 @@ type Query {
      user(id: ID!): Users
 
      # Get user email by name
-      userByEmail(email: String!): [Users]
+      userByEmail(email: String!): Users
 
      # Get user for login with email and password
-      userForLogin(email: String!, password: String): [Users]
+      userForLogin(email: String!, password: String): Users
 
 }
 
