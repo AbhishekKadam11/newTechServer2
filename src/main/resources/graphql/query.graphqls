@@ -19,5 +19,6 @@ type Query {
 
      # Get dashboard products list
       dashboardProductList(): [Products]
+      brandProductList(brand: String!): [Products]
 }
 
