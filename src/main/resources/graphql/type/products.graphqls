@@ -1,0 +1,8 @@
+type Products {
+       id: ID!
+       title: String!
+       brand: String!
+
+}
+
+
