@@ -11,7 +11,7 @@ interface ProductRepository : MongoRepository<Products, Any> {
 //    fun findByNameLike(): List<Products>
     fun findByBrandLike(brand: String): List<Products>
 
-    fun findByProducts(): List<Products>
+   // fun findByProducts(): List<Products>
 
 
 }
