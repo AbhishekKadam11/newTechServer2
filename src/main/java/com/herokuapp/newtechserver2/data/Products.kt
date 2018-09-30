@@ -1,6 +1,7 @@
 package com.herokuapp.newtechserver2.data
 
 import org.springframework.data.mongodb.core.mapping.Document
+import java.util.*
 import javax.persistence.Id
 
 @Document(collection="productuploads")
@@ -18,3 +19,5 @@ data class Products (
         val productimages: String,
         val arrivaldate: String
 )
+
+data class Motherboard(val item: Products)

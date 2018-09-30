@@ -12,4 +12,3 @@ type Products {
        arrivaldate: String!
 }
 
-
