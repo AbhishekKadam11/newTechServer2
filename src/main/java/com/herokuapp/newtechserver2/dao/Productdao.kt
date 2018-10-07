@@ -1,12 +1,20 @@
 package com.herokuapp.newtechserver2.dao
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import com.herokuapp.newtechserver2.Newtechserver2Application
 import com.herokuapp.newtechserver2.data.Products
 import com.herokuapp.newtechserver2.repository.ProductRepository
 import org.slf4j.LoggerFactory
 import org.springframework.boot.configurationprocessor.json.JSONObject
 import org.springframework.stereotype.Component
+import com.google.gson.JsonElement
+import com.google.gson.JsonArray
+
+
+
+
 
 @Component
 class ProductDao(private val productRepository: ProductRepository)  {
@@ -19,8 +27,9 @@ class ProductDao(private val productRepository: ProductRepository)  {
     val routerArray = ArrayList<String>()
     val gson = Gson()
 
-    fun getDashboardProducts(): MutableList<Products> {
-        val productList = productRepository.findAll()
+
+    fun getDashboardProducts(): List<Products> {
+        val productList:List<Products> = productRepository.findAll()
         for(item in productList) {
             val product = JSONObject()
             if (item.category == "Motherboard") {
@@ -54,11 +63,16 @@ class ProductDao(private val productRepository: ProductRepository)  {
         if (motherboardArray.size !== 0) {
             dashboardProduct.put("Motherboard", motherboardArray)
         }
-       // val ProductItems: Products = gson.fromJson(dashboardProduct, Products::class.java)
-   //     val dashboardItem : List<Products> = gson.fromJson(dashboardProduct.toList()
+
+//         val ProductItems: Products = gson.fromJson(dashboardProduct, Products::class.java)
+        val gson = GsonBuilder().setPrettyPrinting().create()
+      //  val element = gson.toJsonTree(dashboardProduct, Products)
+
+        var result: List<Products> = gson.fromJson(dashboardProduct.toString(), listOf<Products>()::class.java)
+        //     val dashboardItem : List<Products> = gson.fromJson(dashboardProduct.toList()
         //   productList.add(dashboardProduct)
-        logger.info(motherboardArray.toString())
-        return productList
+
+        return result
     }
 
     fun getBrandByName(brand: String) =

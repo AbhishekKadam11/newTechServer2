@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class ProductQueryResolver(
         private val productDao: ProductDao
 ): GraphQLQueryResolver {
-    fun dashboardProductList() =
+    fun dashboardProductList(): List<Products> =
             productDao.getDashboardProducts()
 
 
