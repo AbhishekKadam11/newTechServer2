@@ -2,6 +2,7 @@ package com.herokuapp.newtechserver2.graphql.query
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import com.herokuapp.newtechserver2.dao.ProductDao
+import com.herokuapp.newtechserver2.data.ProductList
 import com.herokuapp.newtechserver2.data.Products
 import org.springframework.stereotype.Component
 

@@ -1,5 +1,6 @@
 package com.herokuapp.newtechserver2.data
 
+import org.springframework.boot.configurationprocessor.json.JSONObject
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
 import javax.persistence.Id
@@ -20,4 +21,10 @@ data class Products (
         val arrivaldate: String
 )
 
-data class Motherboard(val item: Products)
+data class ProductList(
+        val motherboard: ArrayList<JSONObject>
+//        val processor: ArrayList<String>,
+//        val graphiccard: ArrayList<String>,
+//        val monitor: ArrayList<String>,
+//        val router: ArrayList<String>
+)

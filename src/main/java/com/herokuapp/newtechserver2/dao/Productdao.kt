@@ -1,7 +1,6 @@
 package com.herokuapp.newtechserver2.dao
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import com.herokuapp.newtechserver2.Newtechserver2Application
 import com.herokuapp.newtechserver2.data.Products
@@ -9,70 +8,66 @@ import com.herokuapp.newtechserver2.repository.ProductRepository
 import org.slf4j.LoggerFactory
 import org.springframework.boot.configurationprocessor.json.JSONObject
 import org.springframework.stereotype.Component
-import com.google.gson.JsonElement
-import com.google.gson.JsonArray
-
-
-
-
+import com.herokuapp.newtechserver2.data.ProductList
+import java.util.*
 
 @Component
 class ProductDao(private val productRepository: ProductRepository)  {
     private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
-    val dashboardProduct = JSONObject()
-    val motherboardArray = ArrayList<String>()
-    val proceessorArray = ArrayList<String>()
-    val graphicArray = ArrayList<String>()
-    val monitorArray = ArrayList<String>()
-    val routerArray = ArrayList<String>()
+    var dashboardProduct = JSONObject()
+    val motherboardArray = ArrayList<JSONObject>()
+    val proceessorArray = ArrayList<JSONObject>()
+    val graphicArray = ArrayList<JSONObject>()
+    val monitorArray = ArrayList<JSONObject>()
+    val routerArray = ArrayList<JSONObject>()
     val gson = Gson()
 
 
     fun getDashboardProducts(): List<Products> {
-        val productList:List<Products> = productRepository.findAll()
-        for(item in productList) {
+        val productListData:List<Products> = productRepository.findAll()
+     //   val productListData = ProductList()
+        for(item in productListData) {
             val product = JSONObject()
             if (item.category == "Motherboard") {
               //  var product = listOf(ProductItem(item.toString(), item.image))
                 product.put("data", item.toString())
                 product.put("image", item.image)
-                motherboardArray.add(product.toString())
+                motherboardArray.add(product)
             }
             if (item.category == "Processor") {
                 product.put("data", item.toString())
                 product.put("image", item.image)
-                proceessorArray.add(product.toString())
+                proceessorArray.add(product)
             }
             if (item.category == "Graphic Card") {
                 product.put("data", item.toString())
                 product.put("image", item.image)
-                graphicArray.add(product.toString())
+                graphicArray.add(product)
             }
             if (item.category == "Monitor") {
                 product.put("data", item.toString())
                 product.put("image", item.image)
-                monitorArray.add(product.toString())
+                monitorArray.add(product)
             }
             if (item.category == "Router") {
                 product.put("data", item.toString())
                 product.put("image", item.image)
-                routerArray.add(product.toString())
+                routerArray.add(product)
             }
 
         }
         if (motherboardArray.size !== 0) {
-            dashboardProduct.put("Motherboard", motherboardArray)
+            dashboardProduct.put("motherboard", motherboardArray)
         }
 
-//         val ProductItems: Products = gson.fromJson(dashboardProduct, Products::class.java)
-        val gson = GsonBuilder().setPrettyPrinting().create()
-      //  val element = gson.toJsonTree(dashboardProduct, Products)
+      //  var test = JsonSerializer(dashboardProduct)
+        var gson = Gson()
 
-        var result: List<Products> = gson.fromJson(dashboardProduct.toString(), listOf<Products>()::class.java)
-        //     val dashboardItem : List<Products> = gson.fromJson(dashboardProduct.toList()
+         var result: ProductList = gson.fromJson(motherboardArray.toString(), ProductList::class.java)
+        logger.info(result.toString())
         //   productList.add(dashboardProduct)
 
-        return result
+        return productListData
     }
 
     fun getBrandByName(brand: String) =
