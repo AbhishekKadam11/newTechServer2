@@ -23,7 +23,7 @@ class ProductDao(private val productRepository: ProductRepository)  {
     val gson = Gson()
 
 
-    fun getDashboardProducts(): List<Products> {
+    fun getDashboardProducts(): String {
         val productListData:List<Products> = productRepository.findAll()
      //   val productListData = ProductList()
         for(item in productListData) {
@@ -63,11 +63,11 @@ class ProductDao(private val productRepository: ProductRepository)  {
       //  var test = JsonSerializer(dashboardProduct)
         var gson = Gson()
 
-         var result: ProductList = gson.fromJson(motherboardArray.toString(), ProductList::class.java)
-        logger.info(result.toString())
+      //   var result: ProductList = gson.fromJson(motherboardArray.toString(), ProductList::class.java)
+      //  logger.info(result.toString())
         //   productList.add(dashboardProduct)
 
-        return productListData
+        return dashboardProduct.toString()
     }
 
     fun getBrandByName(brand: String) =

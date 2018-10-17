@@ -18,7 +18,7 @@ type Query {
       userForLogin(email: String!, password: String): Users
 
      # Get dashboard products list
-      dashboardProductList :  [Products]!
+      dashboardProductList :  String!
     #  brandProductList(brand: String!): [Products]
 }
 

@@ -12,3 +12,6 @@ type Products {
        arrivaldate: String!
 }
 
+type ProductList {
+ motherboard: String!
+}

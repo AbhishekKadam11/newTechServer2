@@ -22,7 +22,7 @@ data class Products (
 )
 
 data class ProductList(
-        val motherboard: ArrayList<JSONObject>
+        val motherboard: String
 //        val processor: ArrayList<String>,
 //        val graphiccard: ArrayList<String>,
 //        val monitor: ArrayList<String>,
