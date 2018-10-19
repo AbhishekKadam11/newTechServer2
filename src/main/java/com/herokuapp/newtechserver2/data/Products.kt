@@ -20,11 +20,3 @@ data class Products (
         val productimages: String,
         val arrivaldate: String
 )
-
-data class ProductList(
-        val motherboard: String
-//        val processor: ArrayList<String>,
-//        val graphiccard: ArrayList<String>,
-//        val monitor: ArrayList<String>,
-//        val router: ArrayList<String>
-)
