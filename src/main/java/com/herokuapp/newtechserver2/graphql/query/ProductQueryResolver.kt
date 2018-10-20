@@ -13,7 +13,8 @@ class ProductQueryResolver(
     fun dashboardProductList() =
             productDao.getDashboardProducts()
 
-
+    fun productDescriptionData(pid: String) =
+            productDao.getProductDescriptionData(pid)
 
     fun brandProductList(brand: String) =
             productDao.getBrandByName(brand)

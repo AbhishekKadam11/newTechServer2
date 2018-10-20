@@ -20,3 +20,9 @@ data class Products (
         val productimages: String,
         val arrivaldate: String
 )
+
+data class ProductDescription (
+        val image: String,
+        val data: Products,
+        val imagearray: String
+)

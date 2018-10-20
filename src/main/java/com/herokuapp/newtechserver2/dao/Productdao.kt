@@ -2,6 +2,7 @@ package com.herokuapp.newtechserver2.dao
 
 import com.google.gson.*
 import com.herokuapp.newtechserver2.Newtechserver2Application
+import com.herokuapp.newtechserver2.data.ProductDescription
 import com.herokuapp.newtechserver2.data.Products
 import com.herokuapp.newtechserver2.repository.ProductRepository
 import org.slf4j.LoggerFactory
@@ -76,8 +77,18 @@ class ProductDao(private val productRepository: ProductRepository)  {
         return dashboardProduct
     }
 
+
+    fun getProductDescriptionData(pid: String): ProductDescription {
+        val productData: ProductDescription = productRepository.findById(pid)
+
+        return productData
+    }
+
+
     fun getBrandByName(brand: String) =
             productRepository.findByBrandLike(brand)
-    
+
+
+
 }
 
