@@ -1,8 +1,6 @@
 package com.herokuapp.newtechserver2.data
 
-import org.springframework.boot.configurationprocessor.json.JSONObject
 import org.springframework.data.mongodb.core.mapping.Document
-import java.util.*
 import javax.persistence.Id
 
 @Document(collection="productuploads")
@@ -23,6 +21,6 @@ data class Products (
 
 data class ProductDescription (
         val image: String,
-        val data: Products,
-        val imagearray: String
+        val data: Products? = null,
+        val imagearray: String?
 )
