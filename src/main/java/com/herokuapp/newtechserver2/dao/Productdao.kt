@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component
 import java.util.*
 
 @Component
-class ProductDao(private val productRepository: ProductRepository)  {
+class ProductDao( private val productRepository: ProductRepository )  {
     private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
     var dashboardProduct = JSONObject()
     val motherboardArray = ArrayList<JSONObject>()
@@ -73,17 +73,23 @@ class ProductDao(private val productRepository: ProductRepository)  {
         }
       //   var result: ProductList = gson.fromJson(motherboardArray.toString(), ProductList::class.java)
       //  logger.info(result.toString())
-
         return dashboardProduct
     }
 
 
     fun getProductDescriptionData(pid: String): ProductDescription {
-        val productData: ProductDescription = productRepository.findById(pid)
-
+        val productData = productRepository.findById(pid)
+        val pdata = getProductData(pid)
+        productData.data = pdata
+        productData.imagearray = pdata.productimages
         return productData
     }
 
+    fun getProductData(pid: String): Products{
+        val productInformation = productRepository.findProductById(pid)
+
+        return productInformation
+    }
 
     fun getBrandByName(brand: String) =
             productRepository.findByBrandLike(brand)

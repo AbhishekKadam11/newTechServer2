@@ -8,13 +8,10 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ProductRepository : MongoRepository<Products, Any> {
 
-   // fun findByProductLike(): List<Products>
-//    fun findByNameLike(): List<Products>
     fun findByBrandLike(brand: String): List<Products>
 
+    fun findProductById(pid: String): Products
+
     fun findById(pid: String): ProductDescription
-
-   // fun findByProducts(): List<Products>
-
 
 }

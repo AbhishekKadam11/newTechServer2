@@ -12,8 +12,6 @@ type Products {
        arrivaldate: String
 }
 
-
-
 type ProductDescription {
         image: String
         data: Products

@@ -21,6 +21,6 @@ data class Products (
 
 data class ProductDescription (
         val image: String,
-        val data: Products? = null,
-        val imagearray: String?
+        var data: Products? = null,
+        var imagearray: String?
 )

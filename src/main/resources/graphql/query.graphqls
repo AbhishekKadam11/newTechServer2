@@ -19,7 +19,7 @@ type Query {
 
      # Get dashboard products list
       dashboardProductList : String
-      productDescriptionData(pid: String!) : ProductDescription
+      getProductDescriptionData(pid: String!) : ProductDescription
     #  brandProductList(brand: String!): [Products]
 }
 
