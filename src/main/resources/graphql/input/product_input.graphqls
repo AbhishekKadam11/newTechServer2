@@ -1,0 +1,12 @@
+input NewProductInput {
+     title: String
+     brand: String
+     category: String
+     modalno: String
+     price: String
+     image: String
+     shortdescription: String
+     fulldescription: String
+     productimages: String
+     arrivaldate: String
+}

@@ -1,4 +1,6 @@
 type Mutation {
    # Creates users
     signup(input: UserInput!): Users!
+   # Create new product
+    newproduct(input: NewProductInput!): Products!
 }

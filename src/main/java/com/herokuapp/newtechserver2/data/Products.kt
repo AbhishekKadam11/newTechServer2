@@ -6,7 +6,7 @@ import javax.persistence.Id
 @Document(collection="productuploads")
 data class Products (
         @Id
-        val id: String,
+        val id: String? = null,
         val title: String,
         val brand: String,
         val category: String,
