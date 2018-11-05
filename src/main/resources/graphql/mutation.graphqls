@@ -3,4 +3,14 @@ type Mutation {
     signup(input: UserInput!): Users!
    # Create new product
     newproduct(input: NewProductInput!): Products!
+   # File upload
+    upload(file: Upload!): File
 }
+
+type File {
+    _id: ID!
+    path: String!
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }

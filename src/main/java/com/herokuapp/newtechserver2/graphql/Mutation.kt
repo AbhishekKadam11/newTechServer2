@@ -28,4 +28,6 @@ class Mutation(
                 input.arrivaldate, input.fulldescription, input.shortdescription, input.image, input.productimages)
         return productData
     }
+
+
 }
