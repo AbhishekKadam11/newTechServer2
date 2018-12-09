@@ -20,6 +20,9 @@ type Query {
      # Get dashboard products list
       dashboardProductList : String
       getProductDescriptionData(pid: String!) : ProductDescription
-    #  brandProductList(brand: String!): [Products]
+     #  brandProductList(brand: String!): [Products]
+
+      # File upload
+     # uploads: [File]
 }
 

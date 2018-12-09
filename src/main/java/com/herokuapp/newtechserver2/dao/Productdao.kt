@@ -26,31 +26,31 @@ class ProductDao( private val productRepository: ProductRepository )  {
 
         for(item in productListData) {
             val product = JSONObject()
+            val jsonString = gson.toJson(Products(item.id,item.title, item.brand, item.category,
+                    item.modalno, item.price, item.image, item.shortdescription, item.fulldescription, item.productimages,
+                    item.arrivaldate))
             if (item.category == "Motherboard") {
-             //  var result: ProductList = gson.fromJson(item.toString(), ProductList::class.java)
-              //  logger.info(item.toString())
-              //  var product = listOf(ProductItem(item.toString(), item.image))
-                product.put("data", item)
+                product.put("data", JSONObject(jsonString))
                 product.put("image", item.image)
                 motherboardArray.add(product)
             }
             if (item.category == "Processor") {
-                product.put("data", item)
+                product.put("data", JSONObject(jsonString))
                 product.put("image", item.image)
                 proceessorArray.add(product)
             }
             if (item.category == "Graphic Card") {
-                product.put("data", item)
+                product.put("data", JSONObject(jsonString))
                 product.put("image", item.image)
                 graphicArray.add(product)
             }
             if (item.category == "Monitor") {
-                product.put("data", item)
+                product.put("data", JSONObject(jsonString))
                 product.put("image", item.image)
                 monitorArray.add(product)
             }
             if (item.category == "Router") {
-                product.put("data", item)
+                product.put("data", JSONObject(jsonString))
                 product.put("image", item.image)
                 routerArray.add(product)
             }
@@ -71,8 +71,8 @@ class ProductDao( private val productRepository: ProductRepository )  {
         if (routerArray.size !== 0) {
             dashboardProduct.put("Router", routerArray)
         }
-      //   var result: ProductList = gson.fromJson(motherboardArray.toString(), ProductList::class.java)
-      //  logger.info(result.toString())
+        //   var result: ProductList = gson.fromJson(motherboardArray.toString(), ProductList::class.java)
+        //  logger.info(result.toString())
         return dashboardProduct
     }
 

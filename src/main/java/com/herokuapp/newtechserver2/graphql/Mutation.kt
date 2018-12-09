@@ -1,12 +1,15 @@
 package com.herokuapp.newtechserver2.graphql
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
+import com.herokuapp.newtechserver2.Newtechserver2Application
 import com.herokuapp.newtechserver2.dao.NewProductDao
 import com.herokuapp.newtechserver2.dao.UserDao
 import com.herokuapp.newtechserver2.data.Products
 import com.herokuapp.newtechserver2.data.Users
 import com.herokuapp.newtechserver2.graphql.input.NewProductInput
 import com.herokuapp.newtechserver2.graphql.input.UserInput
+import org.apache.commons.fileupload.UploadContext
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import javax.servlet.ServletResponse
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +20,7 @@ class Mutation(
         private val newProductDao: NewProductDao
 ): GraphQLMutationResolver {
 
+    private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
 
     fun signup(input: UserInput): Users? {
         val userData = userDao.createUser(input.email, input.password, input.profilename)
@@ -29,5 +33,9 @@ class Mutation(
         return productData
     }
 
+    fun upload() {
+
+      //  logger.info(file.toString())
+    }
 
 }
