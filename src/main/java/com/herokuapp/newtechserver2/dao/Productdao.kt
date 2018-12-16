@@ -94,8 +94,8 @@ class ProductDao( private val productRepository: ProductRepository )  {
     fun getBrandByName(brand: String) =
             productRepository.findByBrandLike(brand)
 
-    fun getCategoryProducts(category: String) =
-            productRepository.findByCategoryLike(category)
+    fun getCategoryProducts(category: String, brand: String?) =
+            productRepository.findByCategoryAndBrandLike(category, brand)
 
 }
 

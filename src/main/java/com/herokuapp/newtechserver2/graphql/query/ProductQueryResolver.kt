@@ -14,8 +14,8 @@ class ProductQueryResolver(
     fun getProductDescriptionData(pid: String) =
             productDao.getProductDescriptionData(pid)
 
-    fun productCategoryList(category: String) =
-            productDao.getCategoryProducts(category)
+    fun productCategoryList(category: String, brand:String?) =
+            productDao.getCategoryProducts(category, brand)
 
     fun brandProductList(brand: String) =
             productDao.getBrandByName(brand)

@@ -12,7 +12,7 @@ interface ProductRepository : MongoRepository<Products, Any> {
 
     fun findProductById(pid: String): Products
 
-    fun findByCategoryLike(category: String): List<Products>
+    fun findByCategoryAndBrandLike(category: String, brand: String?): List<Products>
 
     fun findById(pid: String): ProductDescription
 
