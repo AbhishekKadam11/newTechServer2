@@ -22,6 +22,8 @@ type Query {
       getProductDescriptionData(pid: String!) : ProductDescription
      #  brandProductList(brand: String!): [Products]
 
+      productCategoryList(category: String!): [Products]
+
       # File upload
      # uploads: [File]
 }

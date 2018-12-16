@@ -57,7 +57,7 @@ class ProductDao( private val productRepository: ProductRepository )  {
 
         }
         if (motherboardArray.size !== 0) {
-            dashboardProduct.put("motherboard", motherboardArray)
+            dashboardProduct.put("Motherboard", motherboardArray)
         }
         if (proceessorArray.size !== 0) {
             dashboardProduct.put("Processor", proceessorArray)
@@ -94,7 +94,8 @@ class ProductDao( private val productRepository: ProductRepository )  {
     fun getBrandByName(brand: String) =
             productRepository.findByBrandLike(brand)
 
-
+    fun getCategoryProducts(category: String) =
+            productRepository.findByCategoryLike(category)
 
 }
 
