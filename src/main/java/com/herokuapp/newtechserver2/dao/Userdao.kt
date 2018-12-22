@@ -64,6 +64,14 @@ class UserDao(
                 return result
         }
 
+        fun ensureAuthorized() {
+
+        }
+
+        fun getUserBasicDetails() {
+                //val res = tokenService.getUserIdFromToken()
+        }
+
 
    //     fun createJwt(id: String?): String {
 //                val claims = HashMap<String, Any>()
