@@ -20,13 +20,13 @@ type Query {
      # Get dashboard products list
       dashboardProductList : String
       getProductDescriptionData(pid: String!) : ProductDescription
-     #  brandProductList(brand: String!): [Products]
+     # brandProductList(brand: String!): [Products]
 
       # Get product list based on category and brand
       productCategoryList(category: String!, brand:String!): [Products]
 
       # Get user basic detail based on token
-    #  userBasicDetails: Users
+      userBasicDetails: String
 
       # File upload
      # uploads: [File]

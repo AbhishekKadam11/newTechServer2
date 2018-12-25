@@ -38,28 +38,37 @@ open class JWTFilter internal constructor() : GenericFilterBean() {
             return
         }
 
-        if (allowRequestWithoutToken(request)) {
-            response.setStatus(HttpServletResponse.SC_OK)
+        if(token != null) {
+            val bearer = token.split(" ");
+            val bearerToken = bearer[1];
+            tokenService.getUserIdFromToken(bearerToken)
             filterChain.doFilter(req, res)
         } else {
-            if (token == null || !tokenService.isTokenValid(token)) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED)
-            } else {
-                val userId = ObjectId(tokenService.getUserIdFromToken(token))
-                request.setAttribute("userId", userId)
-                filterChain.doFilter(req, res)
-
-            }
+            response.setStatus(HttpServletResponse.SC_OK)
+            filterChain.doFilter(req, res)
         }
 
+//        if (allowRequestWithoutToken(request)) {
+//            response.setStatus(HttpServletResponse.SC_OK)
+//            filterChain.doFilter(req, res)
+//        } else {
+//            if (token == null || !tokenService.isTokenValid(token)) {
+//                response.sendError(HttpServletResponse.SC_UNAUTHORIZED)
+//            } else {
+//                val userId = ObjectId(tokenService.getUserIdFromToken(token))
+//                request.setAttribute("userId", userId)
+//                filterChain.doFilter(req, res)
+//
+//            }
+//        }
     }
 
-    fun allowRequestWithoutToken(request: HttpServletRequest): Boolean {
-        if (request.getRequestURI().contains("/")) {
-            return true
-        }
-        return false
-    }
+//    fun allowRequestWithoutToken(request: HttpServletRequest): Boolean {
+//        if (request.getRequestURI().contains("/")) {
+//            return true
+//        }
+//        return false
+//    }
 
 //    internal constructor()
 //

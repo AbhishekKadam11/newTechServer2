@@ -4,26 +4,20 @@ import com.herokuapp.newtechserver2.Newtechserver2Application
 import com.herokuapp.newtechserver2.data.Users
 import com.herokuapp.newtechserver2.service.TokenService
 import com.herokuapp.newtechserver2.repository.UserRepository
-import com.sun.net.httpserver.Authenticator
 import org.springframework.stereotype.Component
 import org.slf4j.LoggerFactory
-
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import java.util.*
 
 @Component
 class UserDao(
         private val userRepository: UserRepository,
         private val tokenService: TokenService
 ) {
-
         private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
 
         fun getUserById(id: String) =
                 userRepository.findById(id)
-
-//        fun getUserByName(name: String) =
-//                userRepository.findByNameLike(name)
 
         fun getUserByEmail(email: String) =
                 userRepository.findByEmailLike(email)
@@ -64,24 +58,9 @@ class UserDao(
                 return result
         }
 
-        fun ensureAuthorized() {
-
+        fun getUserBasicDetails(): Optional<Users> {
+                val userid = tokenService.getUserIdFromtoken()
+                return userRepository.findById(userid)
         }
-
-        fun getUserBasicDetails() {
-                //val res = tokenService.getUserIdFromToken()
-        }
-
-
-   //     fun createJwt(id: String?): String {
-//                val claims = HashMap<String, Any>()
-//                claims.put("id", id!!)
-//                return io.jsonwebtoken.Jwts.builder()
-//                        .setClaims(claims)
-//                        .setSubject(id)
-//                     //   .setExpiration(java.util.Date(java.util.Date().time + java.util.concurrent.TimeUnit.HOURS.toMillis(expiration)))
-//                        .signWith(io.jsonwebtoken.SignatureAlgorithm.HS256, secret).compact()
-//        }
-
 
 }

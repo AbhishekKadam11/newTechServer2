@@ -20,6 +20,6 @@ class UserQueryResolver(
     fun userForLogin(email: String, password: String) =
             userDao.getUserForLogin(email, password)
 
-    fun Users() =
+    fun userBasicDetails() =
             userDao.getUserBasicDetails()
 }

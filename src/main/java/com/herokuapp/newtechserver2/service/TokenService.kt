@@ -11,8 +11,11 @@ import org.bson.types.ObjectId;
 import java.util.*
 import org.springframework.stereotype.Service;
 
+var userId: String = ""
+
 @Service
 open class TokenService {
+
 
     fun createToken(userId: String): String? {
         try {
@@ -38,7 +41,8 @@ open class TokenService {
             val verifier = JWT.require(algorithm)
                     .build()
             val jwt = verifier.verify(token)
-            return jwt.getClaim("userId").asString()
+            val id = jwt.getClaim("userId").asString()
+            return setUserIdFromtoken(id).toString()
         } catch (exception: UnsupportedEncodingException) {
             exception.printStackTrace()
             //log WRONG Encoding message
@@ -51,10 +55,19 @@ open class TokenService {
 
     }
 
+    fun setUserIdFromtoken(userid: String) {
+        userId = userid
+    }
+
+    fun getUserIdFromtoken(): String {
+        return userId
+    }
+
     fun isTokenValid(token: String): Boolean {
         val userId = this.getUserIdFromToken(token)
         return userId != null
     }
+
 
     companion object {
 
