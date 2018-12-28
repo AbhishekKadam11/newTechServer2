@@ -26,7 +26,7 @@ type Query {
       productCategoryList(category: String!, brand:String!): [Products]
 
       # Get user basic detail based on token
-      userBasicDetails: String
+      userBasicDetails: Users
 
       # File upload
      # uploads: [File]
