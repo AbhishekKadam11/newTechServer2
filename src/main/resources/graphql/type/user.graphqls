@@ -1,7 +1,7 @@
 type Users {
     id: ID!
     email: String!
-    password: String!
+    password: String?
     profilename: String?
     token: String!
     firstName: String?

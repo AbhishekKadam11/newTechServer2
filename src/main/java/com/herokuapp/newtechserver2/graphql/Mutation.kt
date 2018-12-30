@@ -11,6 +11,7 @@ import com.herokuapp.newtechserver2.graphql.input.UserInput
 import org.apache.commons.fileupload.UploadContext
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
+import java.util.*
 import javax.servlet.ServletResponse
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,6 +32,12 @@ class Mutation(
         val productData = newProductDao.newProductData(input.title, input.brand, input.category, input.modalno, input.price,
                 input.arrivaldate, input.fulldescription, input.shortdescription, input.image, input.productimages)
         return productData
+    }
+
+    fun userBasicDetails(input: UserInput): Users? {
+        val userData = userDao.updateUserBasicDetails(input.email, input?.profilePic, input.profilename, input?.address,
+                input?.extraaddon, input?.firstName, input?.middleName, input?.lastName, input?.gender, input?.mobileno)
+        return userData
     }
 
     fun upload() {

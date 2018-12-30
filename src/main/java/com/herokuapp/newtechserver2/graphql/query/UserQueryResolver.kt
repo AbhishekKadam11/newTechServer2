@@ -22,4 +22,6 @@ class UserQueryResolver(
 
     fun userBasicDetails() =
             userDao.getUserBasicDetails()
+
+
 }

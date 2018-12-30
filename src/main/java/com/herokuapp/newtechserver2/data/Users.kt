@@ -11,9 +11,9 @@ data class Users (
 
         var profilename: String? = null,
 
-        val email: String,
+        var email: String,
 
-        val password: String,
+        val password: String? = null,
 
         var extraaddon: String? = null,
 

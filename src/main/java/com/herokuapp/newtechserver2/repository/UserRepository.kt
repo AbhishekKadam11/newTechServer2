@@ -10,4 +10,5 @@ interface UserRepository : MongoRepository<Users, Any> {
 
     fun findByEmailLike(email: String): Users
     fun findByEmail(email: String, password: String): Users
+    fun findById(id: String): Users
 }

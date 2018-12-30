@@ -44,7 +44,7 @@ class UserDao(
                 return hashedPassword
         }
 
-        fun validatePassword(password: String ,hashedPassword: String): Boolean {
+        fun validatePassword(password: String ,hashedPassword: String?): Boolean {
                 val encoder = BCryptPasswordEncoder().matches(password, hashedPassword)
                 return encoder
         }
@@ -58,9 +58,21 @@ class UserDao(
                 return result
         }
 
-        fun getUserBasicDetails(): Optional<Users> {
+        fun getUserBasicDetails(): Users {
                 val userid = tokenService.getUserIdFromtoken()
                 return userRepository.findById(userid)
+        }
+
+        fun updateUserBasicDetails(email: String, profilePic: String?, profilename: String, address: String?,
+                                   extraaddon: String?, firstName: String?, middleName: String?, lastName: String?,
+                                   gender: String?, mobileno: String?): Users? {
+                val userid = tokenService.getUserIdFromtoken()
+                var userData = userRepository.findById(userid)
+                return userRepository.save(userData.apply {
+                        userData.email = email; userData.profilename = profilename;
+                        userData.extraaddon = extraaddon; userData.firstName = firstName; userData.middleName = middleName;
+                        userData.lastName = lastName; userData.gender = gender; userData.mobileno = mobileno
+                })
         }
 
 }

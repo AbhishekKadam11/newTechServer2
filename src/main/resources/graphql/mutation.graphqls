@@ -5,6 +5,8 @@ type Mutation {
     newproduct(input: NewProductInput!): Products!
    # File upload
   #  upload(file: Upload!): File
+  # Update user basic details
+     userBasicDetails(input: UserInput!): String!
 }
 
 type File {
