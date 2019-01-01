@@ -26,6 +26,9 @@ type Query {
       productCategoryList(category: String!, brand:String!): [Products]
 
       # Get user basic detail based on token
+      getCustomerReviewData(productId: String!): [Review]
+
+      # Get customer review
       userBasicDetails: Users
 
       # File upload

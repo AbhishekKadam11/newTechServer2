@@ -1,6 +1,6 @@
 input UserInput {
     email: String!
-    password: String!
+    password: String?
     profilename: String!
     extraaddon: String?,
     gender: String?,

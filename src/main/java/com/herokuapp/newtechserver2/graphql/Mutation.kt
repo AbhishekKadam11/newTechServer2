@@ -24,7 +24,7 @@ class Mutation(
     private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
 
     fun signup(input: UserInput): Users? {
-        val userData = userDao.createUser(input.email, input.password, input.profilename)
+        val userData = userDao.createUser(input.email, input.password!!, input.profilename)
         return userData
     }
 

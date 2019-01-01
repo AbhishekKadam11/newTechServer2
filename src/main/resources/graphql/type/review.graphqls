@@ -1,0 +1,9 @@
+type Review {
+    id: ID!
+    customerId: String!
+    starRate: String?
+    postDate: String?
+    comment: String!
+    productId: String!
+    name: String!
+}

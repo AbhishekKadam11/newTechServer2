@@ -6,7 +6,7 @@ type Mutation {
    # File upload
   #  upload(file: Upload!): File
   # Update user basic details
-     userBasicDetails(input: UserInput!): String!
+     userBasicDetails(input: UserInput!): Users!
 }
 
 type File {

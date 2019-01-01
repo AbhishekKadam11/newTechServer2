@@ -7,7 +7,6 @@ import com.herokuapp.newtechserver2.repository.UserRepository
 import org.springframework.stereotype.Component
 import org.slf4j.LoggerFactory
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import java.util.*
 
 @Component
 class UserDao(
@@ -71,7 +70,8 @@ class UserDao(
                 return userRepository.save(userData.apply {
                         userData.email = email; userData.profilename = profilename;
                         userData.extraaddon = extraaddon; userData.firstName = firstName; userData.middleName = middleName;
-                        userData.lastName = lastName; userData.gender = gender; userData.mobileno = mobileno
+                        userData.lastName = lastName; userData.gender = gender; userData.mobileno = mobileno;
+                        userData.address = address
                 })
         }
 
