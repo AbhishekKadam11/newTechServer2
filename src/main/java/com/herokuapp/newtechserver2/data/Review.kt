@@ -6,7 +6,7 @@ import javax.persistence.Id
 @Document(collection="customerreviews")
 data class Review (
         @Id
-        val id: String,
+        val id: String? = null,
 
         var customerId: String,
 

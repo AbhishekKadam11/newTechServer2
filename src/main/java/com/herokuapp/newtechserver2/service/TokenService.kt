@@ -70,7 +70,6 @@ open class TokenService {
 
 
     companion object {
-
         val TOKEN_SECRET = "AbhishekIsAwesome"
     }
 }

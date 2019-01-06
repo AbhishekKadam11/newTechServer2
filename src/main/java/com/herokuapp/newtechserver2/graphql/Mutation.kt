@@ -3,10 +3,13 @@ package com.herokuapp.newtechserver2.graphql
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
 import com.herokuapp.newtechserver2.Newtechserver2Application
 import com.herokuapp.newtechserver2.dao.NewProductDao
+import com.herokuapp.newtechserver2.dao.Reviewdao
 import com.herokuapp.newtechserver2.dao.UserDao
 import com.herokuapp.newtechserver2.data.Products
+import com.herokuapp.newtechserver2.data.Review
 import com.herokuapp.newtechserver2.data.Users
 import com.herokuapp.newtechserver2.graphql.input.NewProductInput
+import com.herokuapp.newtechserver2.graphql.input.ProductReviewInput
 import com.herokuapp.newtechserver2.graphql.input.UserInput
 import org.apache.commons.fileupload.UploadContext
 import org.slf4j.LoggerFactory
@@ -18,7 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 class Mutation(
         private val userDao: UserDao,
-        private val newProductDao: NewProductDao
+        private val newProductDao: NewProductDao,
+        private val reviewdao: Reviewdao
 ): GraphQLMutationResolver {
 
     private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
@@ -38,6 +42,11 @@ class Mutation(
         val userData = userDao.updateUserBasicDetails(input.email, input?.profilePic, input.profilename, input?.address,
                 input?.extraaddon, input?.firstName, input?.middleName, input?.lastName, input?.gender, input?.mobileno)
         return userData
+    }
+
+    fun productReview(input: ProductReviewInput): Review? {
+        val result = reviewdao.setCustomerReview(input.productId, input.comment, input.starRate)
+        return result
     }
 
     fun upload() {
