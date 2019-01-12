@@ -11,8 +11,12 @@ type Mutation {
 
   # Update user basic details
      userBasicDetails(input: UserInput!): Users!
+
   # Set customer review
      productReview(input: ProductReviewInput!): Review!
+
+  # Place customer order
+    placeOrder(input: OrdersInput!): Orders!
 
 }
 

@@ -1,0 +1,6 @@
+type Orders {
+    id: ID!
+    customerId: String?
+    totalamount: String?
+    orderData: String!
+}

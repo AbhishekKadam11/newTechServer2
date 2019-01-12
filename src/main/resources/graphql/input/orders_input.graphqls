@@ -1,0 +1,6 @@
+input OrdersInput {
+
+     totalamount: String
+     arrivaldate: String
+     orderData: String
+}

@@ -3,12 +3,15 @@ package com.herokuapp.newtechserver2.graphql
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
 import com.herokuapp.newtechserver2.Newtechserver2Application
 import com.herokuapp.newtechserver2.dao.NewProductDao
+import com.herokuapp.newtechserver2.dao.Ordersdao
 import com.herokuapp.newtechserver2.dao.Reviewdao
 import com.herokuapp.newtechserver2.dao.UserDao
+import com.herokuapp.newtechserver2.data.Orders
 import com.herokuapp.newtechserver2.data.Products
 import com.herokuapp.newtechserver2.data.Review
 import com.herokuapp.newtechserver2.data.Users
 import com.herokuapp.newtechserver2.graphql.input.NewProductInput
+import com.herokuapp.newtechserver2.graphql.input.OrdersInput
 import com.herokuapp.newtechserver2.graphql.input.ProductReviewInput
 import com.herokuapp.newtechserver2.graphql.input.UserInput
 import org.apache.commons.fileupload.UploadContext
@@ -22,7 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 class Mutation(
         private val userDao: UserDao,
         private val newProductDao: NewProductDao,
-        private val reviewdao: Reviewdao
+        private val reviewdao: Reviewdao,
+        private val ordersdao: Ordersdao
 ): GraphQLMutationResolver {
 
     private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
@@ -46,6 +50,11 @@ class Mutation(
 
     fun productReview(input: ProductReviewInput): Review? {
         val result = reviewdao.setCustomerReview(input.productId, input.comment, input.starRate)
+        return result
+    }
+
+    fun placeOrder(input: OrdersInput): Orders? {
+        val result = ordersdao.setCustomerOrder(input.orderData, input.totalamount)
         return result
     }
 
