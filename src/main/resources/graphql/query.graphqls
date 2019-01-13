@@ -31,6 +31,9 @@ type Query {
       # Get customer review
       userBasicDetails: Users
 
+      # Get searched items
+      searchItem(searchKey: String!): [Products]
+
       # File upload
      # uploads: [File]
 }

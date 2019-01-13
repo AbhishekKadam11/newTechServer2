@@ -17,8 +17,9 @@ class Ordersdao(
     fun setCustomerOrder(orderData: String, totalamount: String): Orders? {
         val userid = tokenService.getUserIdFromtoken()
         if(userid.length != 0) {
-            return ordersRepository.save(Orders(customerId=userid, orderData = orderData,
-                    totalamount = totalamount, orderId = (userid + LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE)).toString()))
+            return ordersRepository.save(Orders(customerId =userid, orderData = orderData,
+                    totalamount = totalamount, orderId = (userid + LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE)).toString(),
+                    requestdate = LocalDateTime.now()))
         }
         return null
     }

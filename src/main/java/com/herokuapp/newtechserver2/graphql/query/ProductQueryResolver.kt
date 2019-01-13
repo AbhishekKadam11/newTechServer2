@@ -19,5 +19,8 @@ class ProductQueryResolver(
 
     fun brandProductList(brand: String) =
             productDao.getBrandByName(brand)
+
+    fun searchItem(searchKey: String) =
+            productDao.getProductFromSearch(searchKey)
 }
 

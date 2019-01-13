@@ -87,7 +87,6 @@ class ProductDao( private val productRepository: ProductRepository )  {
 
     fun getProductData(pid: String): Products{
         val productInformation = productRepository.findProductById(pid)
-
         return productInformation
     }
 
@@ -96,6 +95,9 @@ class ProductDao( private val productRepository: ProductRepository )  {
 
     fun getCategoryProducts(category: String, brand: String?) =
             productRepository.findByCategoryAndBrandLike(category, brand)
+
+    fun getProductFromSearch(searchKey: String) =
+            productRepository.findByTitleLike(searchKey)
 
 }
 
