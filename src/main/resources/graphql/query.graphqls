@@ -32,7 +32,7 @@ type Query {
       userBasicDetails: Users
 
       # Get searched items
-      searchItem(searchKey: String!): [Products]
+      searchItem(searchKey: String!, category: String): [Products]
 
       # File upload
      # uploads: [File]

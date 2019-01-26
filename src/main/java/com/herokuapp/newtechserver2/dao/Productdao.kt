@@ -9,9 +9,25 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.configurationprocessor.json.JSONObject
 import org.springframework.stereotype.Component
 import java.util.*
+import org.litote.kmongo.*
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.core.env.Environment
+import org.springframework.data.mongodb.core.MongoTemplate
+import org.springframework.data.mongodb.core.find
+import org.springframework.data.mongodb.core.query.Criteria
+import org.springframework.data.mongodb.core.query.Query
 
 @Component
 class ProductDao( private val productRepository: ProductRepository )  {
+    private val mongoTemplate: MongoTemplate? = null
+//    @Value("spring.data.mongodb.database:newTech")
+//    private var env: Environment
+//    private val springDataMongodbDatabase: String = ""
+//    val client = KMongo.createClient() //get com.mongodb.MongoClient new instance
+//    val db = client.getDatabase(env.getPropert("")) //normal java driver usage
+//   // env.getProperty("userBucket.path")
+ //   val collection = db.getCollection<Products>() //KMongo extension method
+
     private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
     var dashboardProduct = JSONObject()
     val motherboardArray = ArrayList<JSONObject>()
@@ -96,8 +112,12 @@ class ProductDao( private val productRepository: ProductRepository )  {
     fun getCategoryProducts(category: String, brand: String?) =
             productRepository.findByCategoryAndBrandLike(category, brand)
 
-    fun getProductFromSearch(searchKey: String) =
-            productRepository.findByTitleLike(searchKey)
+    fun getProductFromSearch(searchKey: String, category:String) =
+            productRepository.findByQuery(searchKey, category)
+
+
+
+
 
 }
 
