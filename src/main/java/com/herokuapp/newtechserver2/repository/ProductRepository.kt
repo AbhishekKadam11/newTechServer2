@@ -20,6 +20,8 @@ interface ProductRepository : MongoRepository<Products, Any> {
     fun findById(pid: String): ProductDescription
 
     @Query(value = "{'title': {\$regex : ?0, \$options: 'i'},'brand': {\$regex : ?0, \$options: 'i'}}}")
-    fun findByQuery(searchKey: String, category:String): List<Products>
+    fun findByQuery(searchKey: String): List<Products>
 
+    @Query("{'\$or' : [{'title': {\$regex : ?0, \$options: 'i'},'brand': {\$regex : ?0, \$options: 'i'}}], \$and: [{ 'category': ?1 }]}")
+    fun findByCategoryQuery(searchKey: String, category:String): List<Products>
 }
