@@ -15,6 +15,9 @@ interface ProductRepository : MongoRepository<Products, Any> {
 
     fun findByCategoryAndBrandLike(category: String, brand: String?): List<Products>
 
+    @Query("{'\$or' : [{'category': ?0}], \$and: [{ 'brand': {\$in: ?1} }]}")
+    fun findByCategoryAndBrandIn(category: String, brand: Array<String>?): List<Products>
+
     fun findById(pid: String): ProductDescription
 
     @Query(value = "{'title': {\$regex : ?0, \$options: 'i'},'brand': {\$regex : ?0, \$options: 'i'}}}")

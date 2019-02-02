@@ -8,7 +8,7 @@ data class Products (
         @Id
         val id: String? = null,
         val title: String,
-        val brand: String,
+        val brand: String? = null,
         val category: String,
         val modalno: String,
         val price: String,

@@ -94,14 +94,20 @@ class ProductDao( private val productRepository: ProductRepository )  {
     fun getBrandByName(brand: String) =
             productRepository.findByBrandLike(brand)
 
-    fun getCategoryProducts(category: String, brand: String?) =
-            productRepository.findByCategoryAndBrandLike(category, brand)
+    fun getCategoryProducts(category: String, brand: String?): List<Products> {
+        if (brand !== "") {
+            var brandArray = brand!!.replace("[", "").replace("]", "")
+            var data = brandArray.trim().split(",").map { it -> it.trim() }.toTypedArray()
+            return productRepository.findByCategoryAndBrandIn(category, data)
+        } else {
+            return productRepository.findByCategoryAndBrandLike(category, brand)
+        }
+    }
+
 
     fun getProductFromSearch(searchKey: String, category:String): List<Products> {
         if(category.isNotEmpty()) {
-
             var categoryArray = category.replace("[","").replace("]","")
-           // categoryArray = categoryArray
             var data = categoryArray.trim().split(",").map { it -> it.trim() }.toTypedArray()
             var result =  productRepository.findByCategoryQuery(searchKey, data)
             categoryArray = ""

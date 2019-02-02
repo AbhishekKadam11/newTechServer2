@@ -23,7 +23,7 @@ type Query {
      # brandProductList(brand: String!): [Products]
 
       # Get product list based on category and brand
-      productCategoryList(category: String!, brand:String!): [Products]
+      productCategoryList(category: String!, brand:String): [Products]
 
       # Get user basic detail based on token
       getCustomerReviewData(productId: String!): [Review]
