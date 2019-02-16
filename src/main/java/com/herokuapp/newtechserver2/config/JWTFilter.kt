@@ -31,7 +31,7 @@ open class JWTFilter internal constructor() : GenericFilterBean() {
         response.setHeader("Access-Control-Allow-Credentials", "true")
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE")
         response.setHeader("Access-Control-Max-Age", "3600")
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization, X-Requested-With, remember-me, application/json")
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization, X-Requested-With, remember-me")
 
         if ("OPTIONS".equals(request.getMethod(), ignoreCase = true)) {
             response.sendError(HttpServletResponse.SC_OK, "success")
@@ -40,7 +40,7 @@ open class JWTFilter internal constructor() : GenericFilterBean() {
 
         if(token != null) {
             val bearer = token.split(" ")
-            val bearerToken = bearer[1];
+            val bearerToken = bearer[1]
             tokenService.getUserIdFromToken(bearerToken)
             filterChain.doFilter(req, res)
         } else {
