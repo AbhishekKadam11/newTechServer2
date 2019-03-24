@@ -21,8 +21,9 @@ interface ProductRepository : MongoRepository<Products, Any> {
 
     fun findById(pid: String): ProductDescription
 
-    @Query(value = "{'title': {\$regex : ?0, \$options: 'i'},'brand': {\$regex : ?0, \$options: 'i'}}}")
-    fun findByQuery(searchKey: String): List<Products>
+    //@Query(value = "{'title': {\$regex : ?0, \$options: 'i'},'brand': {\$regex : ?0, \$options: 'i'}}}")
+    @Query(value = "{'\$or' : [{'title': {\$regex : ?0, \$options: 'i'}}, {'brand': {\$regex : ?0, \$options: 'i'}}, {'modalno': {\$regex : ?0, \$options: 'i'}}]}")
+    fun findByQueryLike(searchKey: String): List<Products>
 
     @Query("{'\$or' : [{'title': {\$regex : ?0, \$options: 'i'},'brand': {\$regex : ?0, \$options: 'i'}}], \$and: [{ 'category': {\$in: ?1} }]}")
     fun findByCategoryQuery(searchKey: String, category: Array<String>): List<Products>

@@ -113,7 +113,7 @@ class ProductDao( private val productRepository: ProductRepository )  {
             categoryArray = ""
             return result
         } else{
-            return productRepository.findByQuery(searchKey)
+            return productRepository.findByQueryLike(searchKey)
         }
     }
 
