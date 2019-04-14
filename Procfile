@@ -1,2 +1,2 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* Newtechserver2Application
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.herokuapp.newtechserver2
 
