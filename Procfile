@@ -1,2 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.herokuapp.newtechserver2
-
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/* newtechserver2-0.0.1-SNAPSHOT.jar
