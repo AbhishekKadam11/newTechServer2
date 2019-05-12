@@ -19,6 +19,19 @@ data class Products (
         val arrivaldate: String
 )
 
+data class DashboardProducts (
+        @Id
+        val id: String? = null,
+        val title: String,
+        val brand: String? = null,
+        val category: String,
+        val modalno: String,
+        val price: String,
+        val image: String,
+        val productimages: String,
+        val arrivaldate: String
+)
+
 data class ProductDescription (
         val image: String,
         var data: Products? = null,

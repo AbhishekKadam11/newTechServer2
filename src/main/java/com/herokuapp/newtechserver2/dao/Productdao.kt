@@ -2,6 +2,7 @@ package com.herokuapp.newtechserver2.dao
 
 import com.google.gson.*
 import com.herokuapp.newtechserver2.Newtechserver2Application
+import com.herokuapp.newtechserver2.data.DashboardProducts
 import com.herokuapp.newtechserver2.data.ProductDescription
 import com.herokuapp.newtechserver2.data.Products
 import com.herokuapp.newtechserver2.repository.ProductRepository
@@ -27,8 +28,8 @@ class ProductDao( private val productRepository: ProductRepository )  {
 
         for(item in productListData) {
             val product = JSONObject()
-            val jsonString = gson.toJson(Products(item.id,item.title, item.brand, item.category,
-                    item.modalno, item.price, item.image, item.shortdescription, item.fulldescription, item.productimages,
+            val jsonString = gson.toJson(DashboardProducts(item.id,item.title, item.brand, item.category,
+                    item.modalno, item.price, item.image, item.productimages,
                     item.arrivaldate))
             if (item.category == "Motherboard") {
                 product.put("data", JSONObject(jsonString))
