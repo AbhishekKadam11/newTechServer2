@@ -105,7 +105,6 @@ class ProductDao( private val productRepository: ProductRepository )  {
         }
     }
 
-
     fun getProductFromSearch(searchKey: String, category:String): List<Products> {
         if(category.isNotEmpty()) {
             var categoryArray = category.replace("[","").replace("]","")
