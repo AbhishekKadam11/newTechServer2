@@ -41,7 +41,7 @@ open class JWTFilter internal constructor() : GenericFilterBean() {
         if(token != null) {
             val bearer = token.split(" ")
             val bearerToken = bearer[1]
-            tokenService.getUserIdFromToken(bearerToken)
+            tokenService.getUserFromToken(bearerToken)
             filterChain.doFilter(req, res)
         } else {
             response.setStatus(HttpServletResponse.SC_OK)

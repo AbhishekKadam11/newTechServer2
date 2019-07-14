@@ -59,7 +59,8 @@ class UserDao(
 
         fun getUserBasicDetails(): Users {
                 val userid = tokenService.getUserIdFromtoken()
-                return userRepository.findById(userid)
+                val data = userRepository.findById(userid)
+                return data
         }
 
         fun updateUserBasicDetails(email: String, profilePic: String?, profilename: String, address: String?,

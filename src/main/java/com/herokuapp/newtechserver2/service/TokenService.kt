@@ -35,7 +35,7 @@ open class TokenService {
         return null
     }
 
-    fun getUserIdFromToken(token: String): String? {
+    fun getUserFromToken(token: String): String? {
         try {
             val algorithm = Algorithm.HMAC256(TOKEN_SECRET)
             val verifier = JWT.require(algorithm)
@@ -64,7 +64,7 @@ open class TokenService {
     }
 
     fun isTokenValid(token: String): Boolean {
-        val userId = this.getUserIdFromToken(token)
+        val userId = this.getUserFromToken(token)
         return userId != null
     }
 

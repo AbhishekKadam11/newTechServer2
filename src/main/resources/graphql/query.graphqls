@@ -28,7 +28,7 @@ type Query {
       # Get user basic detail based on token
       getCustomerReviewData(productId: String!): [Review]
 
-      # Get customer review
+      # Get user basic details
       userBasicDetails: Users
 
       # Get searched items
@@ -36,5 +36,8 @@ type Query {
 
       # File upload
      # uploads: [File]
+
+     # Get customer last orders
+      customerOrderDetails: [Orders]
 }
 

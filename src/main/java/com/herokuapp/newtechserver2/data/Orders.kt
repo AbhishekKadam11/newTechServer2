@@ -17,6 +17,6 @@ data class Orders (
 
         var orderData: String,
 
-        var requestdate: LocalDateTime
+        var requestdate: LocalDateTime? = null
 
 )
