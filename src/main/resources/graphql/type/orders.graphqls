@@ -1,6 +1,7 @@
 type Orders {
     id: ID!
     customerId: String
+    orderId: String
     totalamount: String
     orderData: String
     requestdate: String
