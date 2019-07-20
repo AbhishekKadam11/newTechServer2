@@ -4,8 +4,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 import javax.persistence.Id
 
-@Document(collection="orderrequests")
-data class Orders (
+@Document(collection = "orderrequests")
+data class Orders(
         @Id
         val id: String? = null,
 
@@ -19,4 +19,11 @@ data class Orders (
 
         var requestdate: LocalDateTime? = null
 
+)
+
+data class productOrderDetails(
+        // [{productId=5a81b6d55bfc8339202a218d, quantity=1, price=18000}]
+        val productId: String,
+        val quantity: Int,
+        val price: Int
 )

@@ -1,11 +1,14 @@
 package com.herokuapp.newtechserver2.dao
 
+import com.google.gson.Gson
 import com.herokuapp.newtechserver2.Newtechserver2Application
 import com.herokuapp.newtechserver2.data.Orders
+import com.herokuapp.newtechserver2.data.productOrderDetails
 import com.herokuapp.newtechserver2.repository.OrdersRepository
 import com.herokuapp.newtechserver2.repository.UserRepository
 import com.herokuapp.newtechserver2.service.TokenService
 import org.slf4j.LoggerFactory
+import org.springframework.boot.configurationprocessor.json.JSONObject
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -30,9 +33,21 @@ class Ordersdao(
 
     fun getCustomerOrderDetails(): List<Orders> {
         val userid = tokenService.getUserIdFromtoken()
-        logger.info(userid)
+     //   logger.info(userid)
+        var productData = JSONObject()
         if(userid.length != 0) {
             val listdata =  ordersRepository.findCustomerIdLike(userid)
+            for (p in listdata) {
+
+               // val listOfStrings: List<Orders> = Gson().fromJson(p.orderData,  Array<Orders>::class.java).toList()
+                val listOfStrings: List<productOrderDetails> =  Gson().fromJson(p.orderData,  Array<productOrderDetails>::class.java).toList()
+              //  var data = p.orderData.get("")
+                logger.info(listOfStrings.toString())
+//                for (data in p.orderData) {
+//                    logger.info("data" + data)
+//                }
+            }
+
             return listdata
         }
         return emptyList()
