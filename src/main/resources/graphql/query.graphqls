@@ -38,6 +38,6 @@ type Query {
      # uploads: [File]
 
      # Get customer last orders
-      customerOrderDetails: [Orders]
+      customerOrderDetails: [ProductShortDetails]
 }
 

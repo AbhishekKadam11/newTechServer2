@@ -27,3 +27,10 @@ data class productOrderDetails(
         val quantity: Int,
         val price: Int
 )
+
+data class ProductShortDetails(
+        val title: String,
+        val image: String,
+        val quantity: Int,
+        val totalprice: Int
+)
