@@ -6,3 +6,16 @@ type Orders {
     orderData: String
     requestdate: String
 }
+
+type ProductOrdered {
+      orderId: String?,
+      totalamount: String?,
+      requestdate: String?,
+      productDescription: ProductDescription
+}
+
+type ProductDescription {
+      image: String
+      data: Products
+      imagearray: String
+}

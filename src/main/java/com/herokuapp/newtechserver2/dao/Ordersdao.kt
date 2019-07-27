@@ -2,10 +2,7 @@ package com.herokuapp.newtechserver2.dao
 
 import com.google.gson.Gson
 import com.herokuapp.newtechserver2.Newtechserver2Application
-import com.herokuapp.newtechserver2.data.Orders
-import com.herokuapp.newtechserver2.data.ProductShortDetails
-import com.herokuapp.newtechserver2.data.Products
-import com.herokuapp.newtechserver2.data.productOrderDetails
+import com.herokuapp.newtechserver2.data.*
 import com.herokuapp.newtechserver2.repository.OrdersRepository
 import com.herokuapp.newtechserver2.repository.UserRepository
 import com.herokuapp.newtechserver2.service.TokenService
@@ -35,11 +32,12 @@ class Ordersdao(
         return null
     }
 
-    fun getCustomerOrderDetails(): List<ProductShortDetails>? {
+    fun getCustomerOrderDetails(): ArrayList<ProductOrdered> {
         val userid = tokenService.getUserIdFromtoken()
      //   logger.info(userid)
      //   var productData = listOf<Products>()
-        var productData:ArrayList<ProductShortDetails>?=null
+//        var productData = ProductOrdered("", "")
+        var productData = ArrayList<ProductOrdered>()
         if(userid.length != 0) {
             val listdata =  ordersRepository.findCustomerIdLike(userid)
             for (p in listdata) {
@@ -53,17 +51,15 @@ class Ordersdao(
                   //  productData.add
                   // productData.add(productDescription)
                     logger.info(productDescription.image.toString())
-                  //  productData.add(0,productDescription)
+                    productData.add(ProductOrdered(p.orderId, p.totalamount, p.requestdate.toString(), productDescription))
                 }
            //     logger.info(orderedProduct.toString())
 //                for (data in p.orderData) {
 //                    logger.info("data" + data)
 //                }
             }
-
-            return productData
         }
-        return null
+        return productData
     }
 
 }

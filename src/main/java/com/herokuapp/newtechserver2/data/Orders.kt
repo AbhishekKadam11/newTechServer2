@@ -28,9 +28,9 @@ data class productOrderDetails(
         val price: Int
 )
 
-data class ProductShortDetails(
-        val title: String,
-        val image: String,
-        val quantity: Int,
-        val totalprice: Int
+data class ProductOrdered(
+        val orderId: String?,
+        val totalamount: String?,
+        val requestdate: String?,
+        val productDescription: ProductDescription
 )
