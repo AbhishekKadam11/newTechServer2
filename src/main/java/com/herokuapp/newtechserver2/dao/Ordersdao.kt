@@ -34,29 +34,16 @@ class Ordersdao(
 
     fun getCustomerOrderDetails(): ArrayList<ProductOrdered> {
         val userid = tokenService.getUserIdFromtoken()
-     //   logger.info(userid)
-     //   var productData = listOf<Products>()
-//        var productData = ProductOrdered("", "")
         var productData = ArrayList<ProductOrdered>()
-        if(userid.length != 0) {
-            val listdata =  ordersRepository.findCustomerIdLike(userid)
+        if (userid.length != 0) {
+            val listdata = ordersRepository.findCustomerIdLike(userid)
             for (p in listdata) {
-
-               // val listOfStrings: List<Orders> = Gson().fromJson(p.orderData,  Array<Orders>::class.java).toList()
-                val orderedProduct: List<productOrderDetails> =  Gson().fromJson(p.orderData,  Array<productOrderDetails>::class.java).toList()
-              //  var data = orderedProduct.get("")
-
+                val orderedProduct: List<productOrderDetails> = Gson().fromJson(p.orderData, Array<productOrderDetails>::class.java).toList()
                 for (item in orderedProduct) {
                     var productDescription = productDao.getProductDescriptionData(item.productId)
-                  //  productData.add
-                  // productData.add(productDescription)
-                    logger.info(productDescription.image.toString())
+//                    logger.info(productDescription.image.toString())
                     productData.add(ProductOrdered(p.orderId, p.totalamount, p.requestdate.toString(), productDescription))
                 }
-           //     logger.info(orderedProduct.toString())
-//                for (data in p.orderData) {
-//                    logger.info("data" + data)
-//                }
             }
         }
         return productData
