@@ -3,7 +3,8 @@ package com.herokuapp.newtechserver2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @SpringBootApplication
 public class Newtechserver2Application {
@@ -19,11 +20,6 @@ public class Newtechserver2Application {
         public void addResourceHandlers(ResourceHandlerRegistry registry){
             registry.addResourceHandler("/**")
                     .addResourceLocations("classpath:/uploads/");
-        }
-
-        @Override
-        public void addCorsMappings(CorsRegistry registry) {
-            registry.addMapping("/**").allowedOrigins("*");
         }
     }
 

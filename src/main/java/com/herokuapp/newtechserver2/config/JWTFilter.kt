@@ -27,11 +27,11 @@ open class JWTFilter internal constructor() : GenericFilterBean() {
         val request = req as HttpServletRequest
         val response = res as HttpServletResponse
         val token = request.getHeader("Authorization")
-        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"))
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true")
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE")
         response.setHeader("Access-Control-Max-Age", "3600")
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization, X-Requested-With, remember-me")
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
 
         if ("OPTIONS".equals(request.getMethod(), ignoreCase = true)) {
             response.sendError(HttpServletResponse.SC_OK, "success")
