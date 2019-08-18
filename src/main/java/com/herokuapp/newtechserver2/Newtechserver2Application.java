@@ -20,11 +20,6 @@ public class Newtechserver2Application {
             registry.addResourceHandler("/**")
                     .addResourceLocations("classpath:/uploads/");
         }
-    }
-
-    @Configuration
-    @EnableWebMvc
-    public class WebConfig extends WebMvcConfigurerAdapter {
 
         @Override
         public void addCorsMappings(CorsRegistry registry) {
