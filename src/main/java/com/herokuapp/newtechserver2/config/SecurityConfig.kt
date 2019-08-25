@@ -1,11 +1,18 @@
 package com.herokuapp.newtechserver2.config
 
+import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 
 @EnableWebSecurity
 open class SecurityConfig : WebSecurityConfigurerAdapter() {
+
+    @Bean
+    fun corsFilter(): JWTFilter {
+        return JWTFilter()
+    }
+
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
