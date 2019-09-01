@@ -1,4 +1,5 @@
 package com.herokuapp.newtechserver2.config
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +39,7 @@ open class JWTFilter internal constructor() : GenericFilterBean() {
             return
         }
 
-        if(token != null) {
+        if (token != null) {
             val bearer = token.split(" ")
             val bearerToken = bearer[1]
             tokenService.getUserFromToken(bearerToken)
@@ -62,17 +63,4 @@ open class JWTFilter internal constructor() : GenericFilterBean() {
 //            }
 //        }
     }
-
-//    fun allowRequestWithoutToken(request: HttpServletRequest): Boolean {
-//        if (request.getRequestURI().contains("/")) {
-//            return true
-//        }
-//        return false
-//    }
-
-//    internal constructor()
-//
-//    init {
-//        return true
-//    }
 }
