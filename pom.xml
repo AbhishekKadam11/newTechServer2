@@ -210,23 +210,32 @@
 			</plugin>
 			<!-- Heroku Maven Plugin Configuration -->
 
+<!--			<plugin>-->
+<!--				<groupId>com.heroku.sdk</groupId>-->
+<!--				<artifactId>heroku-maven-plugin</artifactId>-->
+<!--				<version>1.1.1</version>-->
+<!--				<configuration>-->
+<!--					<appName>newtechserver2</appName>-->
+<!--					<includeTarget>false</includeTarget>-->
+<!--					<includes>-->
+<!--						<include>${basedir}/${full-artifact-name}</include>-->
+<!--					</includes>-->
+<!--					<jdkVersion>1.8</jdkVersion>-->
+<!--					<processTypes>-->
+<!--						<web>java $JAVA_OPTS -jar ${full-artifact-name}</web>-->
+<!--					</processTypes>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>com.heroku.sdk</groupId>
 				<artifactId>heroku-maven-plugin</artifactId>
-				<version>2.0.3</version>
 				<configuration>
 					<appName>newtechserver2</appName>
-					<includeTarget>false</includeTarget>
-					<includes>
-						<include>${basedir}/${full-artifact-name}</include>
-					</includes>
-					<jdkVersion>1.8</jdkVersion>
 					<processTypes>
-						<web>java $JAVA_OPTS -jar ${full-artifact-name}</web>
+						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
 					</processTypes>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 
