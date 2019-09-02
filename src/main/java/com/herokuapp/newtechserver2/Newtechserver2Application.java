@@ -32,6 +32,7 @@ public class Newtechserver2Application {
             }
         };
     }
+
 }
 
 
