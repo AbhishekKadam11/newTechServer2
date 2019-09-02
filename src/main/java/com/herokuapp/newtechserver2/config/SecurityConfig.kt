@@ -8,10 +8,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 open class SecurityConfig : WebSecurityConfigurerAdapter() {
 
-    @Bean
-    fun corsFilter(): JWTFilter {
-        return JWTFilter()
-    }
+//    @Bean
+//    fun corsFilter(): JWTFilter {
+//        return JWTFilter()
+//    }
 
 
     @Throws(Exception::class)
