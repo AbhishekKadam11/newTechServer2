@@ -5,7 +5,6 @@
   # This is where we will look for package.json/.nvmrc/etc.
   # If not set, defaults to the root directory.
 
-[build]
   base    = ""
   publish = "target/site"
   command = "./mvnw clean site"
