@@ -15,7 +15,7 @@ data class Orders(
 
         var totalamount: String?,
 
-        var orderData: String,
+        var orderData: List<productOrderDetails>,
 
         var requestdate: LocalDateTime? = null
 
@@ -25,7 +25,7 @@ data class productOrderDetails(
         // [{productId=5a81b6d55bfc8339202a218d, quantity=1, price=18000}]
         val productId: String,
         val quantity: Int,
-        val price: Int
+        val price: String
 )
 
 data class ProductOrdered(

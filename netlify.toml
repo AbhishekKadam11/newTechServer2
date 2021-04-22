@@ -1,6 +1,0 @@
-[build]
-  base    = ""
-  publish = "target"
-  command = "chmod a+x ./mvnw && ./mvnw clean install"
-[build.environment]
-  MONGODB_URI2 = "mongodb+srv://abhishekkadam007:newtech%402@cluster0.fvdcp.mongodb.net/newTech?retryWrites=true&w=majority"

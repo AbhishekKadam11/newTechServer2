@@ -1,6 +1,5 @@
 input OrdersInput {
+      totalamount: String
+      orderData: String
+ }
 
-     totalamount: String
-     arrivaldate: String
-     orderData: String
-}

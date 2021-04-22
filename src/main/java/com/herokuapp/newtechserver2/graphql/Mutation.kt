@@ -14,12 +14,8 @@ import com.herokuapp.newtechserver2.graphql.input.NewProductInput
 import com.herokuapp.newtechserver2.graphql.input.OrdersInput
 import com.herokuapp.newtechserver2.graphql.input.ProductReviewInput
 import com.herokuapp.newtechserver2.graphql.input.UserInput
-import org.apache.commons.fileupload.UploadContext
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
-import java.util.*
-import javax.servlet.ServletResponse
-import javax.servlet.http.HttpServletResponse;
 
 @Component
 class Mutation(

@@ -7,8 +7,6 @@ import com.herokuapp.newtechserver2.repository.OrdersRepository
 import com.herokuapp.newtechserver2.repository.UserRepository
 import com.herokuapp.newtechserver2.service.TokenService
 import org.slf4j.LoggerFactory
-import org.springframework.boot.configurationprocessor.json.JSONArray
-import org.springframework.boot.configurationprocessor.json.JSONObject
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -25,7 +23,9 @@ class Ordersdao(
     fun setCustomerOrder(orderData: String, totalamount: String): Orders? {
         val userid = tokenService.getUserIdFromtoken()
         if(userid.length != 0) {
-            return ordersRepository.save(Orders(customerId =userid, orderData = orderData,
+            val orderedProduct: List<productOrderDetails> = Gson().fromJson(orderData, Array<productOrderDetails>::class.java).toList()
+            logger.info(orderedProduct.toString())
+            return ordersRepository.save(Orders(customerId =userid, orderData = orderedProduct,
                     totalamount = totalamount, orderId = (userid + LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE)).toString(),
                     requestdate = LocalDateTime.now()))
         }
@@ -38,7 +38,9 @@ class Ordersdao(
         if (userid.length != 0) {
             val listdata = ordersRepository.findCustomerIdLike(userid)
             for (p in listdata) {
-                val orderedProduct: List<productOrderDetails> = Gson().fromJson(p.orderData, Array<productOrderDetails>::class.java).toList()
+//                logger.info(p.toString())
+//                val orderedProduct: List<productOrderDetails> = Gson().fromJson(p.orderData, Array<productOrderDetails>::class.java).toList()
+                val orderedProduct: List<productOrderDetails> = p.orderData
                 for (item in orderedProduct) {
                     var productDescription = productDao.getProductDescriptionData(item.productId)
 //                    logger.info(productDescription.image.toString())

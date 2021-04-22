@@ -19,3 +19,9 @@ type ProductDescription {
       data: Products
       imagearray: String
 }
+
+type productOrderDetails {
+    productId: String,
+    quantity: Int,
+    price: String
+}
