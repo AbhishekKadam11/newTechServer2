@@ -8,36 +8,42 @@ type Query {
     # Get persons by name
     personsByName(name: String!): [Person]
 
-     # Get user with ID
-     user(id: ID!): Users
+    # Get user with ID
+    user(id: ID!): Users
 
-     # Get user email by name
-      userByEmail(email: String!): Users
+    # Get user email by name
+    userByEmail(email: String!): Users
 
-     # Get user for login with email and password
-      userForLogin(email: String!, password: String): Users
+    # Get user for login with email and password
+    userForLogin(email: String!, password: String): Users
 
-     # Get dashboard products list
-      dashboardProductList : String
-      getProductDescriptionData(pid: String!) : ProductDescription
-     # brandProductList(brand: String!): [Products]
+    # Get dashboard products list
+    dashboardProductList : String
+    getProductDescriptionData(pid: String!) : ProductDescription
+    # brandProductList(brand: String!): [Products]
 
-      # Get product list based on category and brand
-      productCategoryList(category: String!, brand:String): [Products]
+    # Get product list based on category and brand
+    productCategoryList(category: String!, brand:String): [Products]
 
-      # Get user basic detail based on token
-      getCustomerReviewData(productId: String!): [Review]
+    # Get user basic detail based on token
+    getCustomerReviewData(productId: String!): [Review]
 
-      # Get user basic details
-      userBasicDetails: Users
+    # Get user basic details
+    userBasicDetails: Users
 
-      # Get searched items
-      searchItem(searchKey: String!, category: String): [Products]
+    # Get searched items
+    searchItem(searchKey: String!, category: String): [Products]
 
-      # File upload
-     # uploads: [File]
+    # File upload
+    # uploads: [File]
 
-     # Get customer last orders
-      customerOrderDetails: [ProductOrdered]
+    # Get customer last orders
+    customerOrderDetails: [ProductOrdered]
+
+    # Get state list
+    stateList: [Cities]
+
+    # Get city list based on state
+    cityList(state: String): [Cities]
 }
 

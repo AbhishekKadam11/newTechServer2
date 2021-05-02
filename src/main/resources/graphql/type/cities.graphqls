@@ -1,0 +1,7 @@
+type Cities {
+
+    name: String
+    state: String
+}
+
+
