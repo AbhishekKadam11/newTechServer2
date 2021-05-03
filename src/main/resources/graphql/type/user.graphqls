@@ -1,17 +1,19 @@
 type Users {
     id: ID!
     email: String!
-    password: String?
-    profilename: String?
-    token: String?
-    firstName: String?
-    lastName: String?
-    middleName: String?
-    gender: String?
-    extraaddon: String?
-    address: String?
-    mobileno: String?
-    profilePic: String?
+    password: String
+    profilename: String
+    token: String
+    firstName: String
+    lastName: String
+    middleName: String
+    gender: String
+    extraaddon: String
+    address: String
+    mobileno: String
+    profilePic: String
+    state: String
+    city: String
 }
 
 

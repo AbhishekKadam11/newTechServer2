@@ -11,5 +11,7 @@ data class UserInput(
         val lastName: String?,
         val profilePic: String?,
         val address: String?,
-        val mobileno: String?
+        val mobileno: String?,
+        val state: String?,
+        val city: String?
 )

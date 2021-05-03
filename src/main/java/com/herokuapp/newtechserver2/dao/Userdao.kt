@@ -65,14 +65,14 @@ class UserDao(
 
         fun updateUserBasicDetails(email: String, profilePic: String?, profilename: String, address: String?,
                                    extraaddon: String?, firstName: String?, middleName: String?, lastName: String?,
-                                   gender: String?, mobileno: String?): Users? {
+                                   gender: String?, mobileno: String?,state: String?, city: String?): Users? {
                 val userid = tokenService.getUserIdFromtoken()
                 var userData = userRepository.findById(userid)
                 return userRepository.save(userData.apply {
                         userData.email = email; userData.profilename = profilename;
                         userData.extraaddon = extraaddon; userData.firstName = firstName; userData.middleName = middleName;
                         userData.lastName = lastName; userData.gender = gender; userData.mobileno = mobileno;
-                        userData.address = address
+                        userData.address = address; userData.state = state;userData.city = city
                 })
         }
 

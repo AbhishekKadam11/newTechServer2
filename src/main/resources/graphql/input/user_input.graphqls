@@ -1,13 +1,15 @@
 input UserInput {
     email: String!
-    password: String?
-    profilename: String!
-    extraaddon: String?,
-    gender: String?,
-    firstName: String?,
-    middleName: String?,
-    lastName: String?,
-    profilePic: String?,
-    address: String?,
-    mobileno: String?
+    password: String,
+    profilename: String!,
+    extraaddon: String,
+    gender: String,
+    firstName: String,
+    middleName: String,
+    lastName: String,
+    profilePic: String,
+    address: String,
+    mobileno: String,
+    state: String,
+    city: String
 }

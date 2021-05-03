@@ -40,7 +40,8 @@ class Mutation(
 
     fun userBasicDetails(input: UserInput): Users? {
         val userData = userDao.updateUserBasicDetails(input.email, input?.profilePic, input.profilename, input?.address,
-                input?.extraaddon, input?.firstName, input?.middleName, input?.lastName, input?.gender, input?.mobileno)
+                input?.extraaddon, input?.firstName, input?.middleName, input?.lastName, input?.gender, input?.mobileno,
+                input?.state, input?.city)
         return userData
     }
 

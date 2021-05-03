@@ -31,7 +31,11 @@ data class Users (
 
         var address: String? = null,
 
-        var mobileno: String? = null
+        var mobileno: String? = null,
+
+        var state: String? = null,
+
+        var city: String? = null
 
 
 )
