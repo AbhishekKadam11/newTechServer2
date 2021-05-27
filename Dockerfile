@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM maven:3.5.2-jdk-8-alpine
 
 MAINTAINER Abhishek Kadam
 
