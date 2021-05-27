@@ -15,6 +15,6 @@ FROM openjdk:8-jre-alpine
 
 
 
-COPY --from=MAVEN_BUILD /app/target/newtechserver2-0.1.0-SNAPSHOT.jar /app/target/newtechserver2-0.1.0-SNAPSHOT.jar
+COPY --from=MAVEN_BUILD  /app/build/libs/newtechserver2-0.1.0-SNAPSHOT.jar /app.jar
 
 ENTRYPOINT ["java", "-jar", "newtechserver2-0.1.0-SNAPSHOT.jar"]
