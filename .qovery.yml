@@ -1,0 +1,11 @@
+---
+application:
+  name: "newtechserver2"
+  project: "newtechserver2"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-newtechserver2"
+  routes:
+  - application_name: "newtechserver2"
+    paths:
+    - "/*"
