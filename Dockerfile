@@ -1,5 +1,14 @@
-FROM maven:3.5.2-jdk-8-alpine
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
 
-ADD target/newtechserver2-0.1.0-SNAPSHOT.jar newtechserver2-0.1.0-SNAPSHOT.jar
-EXPOSE 8085
-ENTRYPOINT ["java","-jar","newtechserver2-0.1.0-SNAPSHOT.jar"]
+MAINTAINER Abhishek Kadam
+
+
+RUN mvn package
+
+FROM openjdk:8-jre-alpine
+
+
+
+COPY /target/newtechserver2-0.1.0-SNAPSHOT.jar newtechserver2-0.1.0-SNAPSHOT.jar
+
+ENTRYPOINT ["java", "-jar", "newtechserver2-0.1.0-SNAPSHOT.jar"]
