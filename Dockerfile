@@ -1,4 +1,4 @@
-FROM maven:3.5.2-jdk-8-alpine
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
 
 MAINTAINER Abhishek Kadam
 
@@ -12,6 +12,6 @@ FROM openjdk:8-jre-alpine
 
 WORKDIR /app
 
-COPY /build/target/newtechserver2-0.1.0.jar /app/
+COPY --from=MAVEN_BUILD *.jar /app/
 
 ENTRYPOINT ["java", "-jar", "newtechserver2-0.1.0.jar"]
