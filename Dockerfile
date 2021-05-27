@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine AS MAVEN_BUILD
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
 
 MAINTAINER Abhishek Kadam
 
@@ -8,7 +8,7 @@ COPY src /build/src/
 WORKDIR /build/
 RUN mvn package
 
-FROM adoptopenjdk/openjdk11:alpine-slim
+FROM openjdk:8-jre-alpine
 
 WORKDIR /app
 
