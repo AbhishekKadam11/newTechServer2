@@ -2,19 +2,19 @@ FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
 
 MAINTAINER Abhishek Kadam
 
-ADD . ./build
-WORKDIR /build
+RUN mkdir -p /app
+COPY . /app
+WORKDIR /app
+COPY pom.xml /app/
+COPY src /app/src/
 
-COPY pom.xml /build/
-COPY src /build/src/
-
-WORKDIR /build/
+WORKDIR /app/
 RUN mvn package
 
 FROM openjdk:8-jre-alpine
 
-WORKDIR /build
 
-COPY --from=MAVEN_BUILD /build/target/newtechserver2-0.1.0-SNAPSHOT.jar /build/
+
+COPY --from=MAVEN_BUILD /app/target/newtechserver2-0.1.0-SNAPSHOT.jar /app/target/newtechserver2-0.1.0-SNAPSHOT.jar
 
 ENTRYPOINT ["java", "-jar", "newtechserver2-0.1.0-SNAPSHOT.jar"]
