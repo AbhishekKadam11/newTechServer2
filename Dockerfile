@@ -13,8 +13,8 @@ RUN mvn package
 
 FROM openjdk:8-jre-alpine
 
-WORKDIR /app
+WORKDIR /build
 
-COPY --from=MAVEN_BUILD /build/target/newtechserver2-0.1.0-SNAPSHOT.jar /app/
+COPY --from=MAVEN_BUILD /build/target/newtechserver2-0.1.0-SNAPSHOT.jar /build/
 
 ENTRYPOINT ["java", "-jar", "newtechserver2-0.1.0-SNAPSHOT.jar"]
