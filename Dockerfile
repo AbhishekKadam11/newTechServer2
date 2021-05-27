@@ -9,7 +9,7 @@ RUN cd /usr/local/bin && wget https://services.gradle.org/distributions/gradle-5
 RUN mkdir -p /app
 COPY . /app
 WORKDIR /app
-RUN gradle build -x test
+
 
 FROM adoptopenjdk/openjdk11:alpine-slim
 MAINTAINER Abhishek Kadam 
