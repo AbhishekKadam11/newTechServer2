@@ -1,4 +1,4 @@
-FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
+FROM maven:3.5.2-jdk-8-alpine
 
 MAINTAINER Abhishek Kadam
 
@@ -11,7 +11,7 @@ RUN mvn package
 FROM openjdk:8-jre-alpine
 
 WORKDIR /app
-ls -lsa
-COPY --from=MAVEN_BUILD /build/target/newtechserver2-0.1.0-SNAPSHOT.jar /app/
+
+COPY /build/target/newtechserver2-0.1.0-SNAPSHOT.jar /app/
 
 ENTRYPOINT ["java", "-jar", "newtechserver2-0.1.0-SNAPSHOT.jar"]
