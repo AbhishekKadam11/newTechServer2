@@ -1,24 +1,17 @@
-FROM adoptopenjdk/openjdk11:alpine AS build
-MAINTAINER Abhishek Kadam 
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
 
-RUN apk update && apk upgrade && apk add bash
+MAINTAINER Abhishek Kadam
 
-RUN cd /usr/local/bin && wget https://services.gradle.org/distributions/gradle-5.6-all.zip && \
-/usr/bin/unzip gradle-5.6-all.zip && ln -s /usr/local/bin/gradle-5.6/bin/gradle /usr/bin/gradle
+COPY pom.xml /build/
+COPY src /build/src/
 
-RUN mkdir -p /app
-COPY . /app
+WORKDIR /build/
+RUN mvn package
+
+FROM openjdk:8-jre-alpine
+
 WORKDIR /app
 
+COPY --from=MAVEN_BUILD /build/target/newtechserver2-0.1.0.jar /app/
 
-FROM adoptopenjdk/openjdk11:alpine-slim
-MAINTAINER Abhishek Kadam 
-
-RUN apk update && apk upgrade && apk add bash
-
-EXPOSE 8080
-
-COPY --from=build /app/build/libs/newtechserver2-0.0.1-SNAPSHOT.jar /app.jar
-
-ENV JAVA_OPTS=""
-CMD exec java $JAVA_OPTS -jar /app.jar1.0.jar"]
+ENTRYPOINT ["java", "-jar", "newtechserver2-0.1.0.jar"]
