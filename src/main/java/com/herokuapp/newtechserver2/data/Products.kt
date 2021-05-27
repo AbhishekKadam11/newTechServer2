@@ -37,3 +37,19 @@ data class ProductDescription (
         var data: Products? = null,
         var imagearray: String?
 )
+
+@Document(collection="fs.files")
+data class Files (
+        @Id
+        val id: String? = null,
+        val filename: String
+)
+
+@Document(collection="fs.chunks")
+data class Fileschunks (
+        @Id
+        val id: String? = null,
+        val files_id: String? = null,
+        val data: String
+)
+

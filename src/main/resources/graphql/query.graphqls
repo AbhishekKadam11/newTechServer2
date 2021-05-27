@@ -45,5 +45,8 @@ type Query {
 
     # Get city list based on state
     cityList(state: String): [Cities]
+
+    # Get file from grid fs
+    getFile(filename: String): [String]
 }
 

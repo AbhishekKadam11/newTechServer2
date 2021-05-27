@@ -22,5 +22,8 @@ class ProductQueryResolver(
 
     fun searchItem(searchKey: String, category: String) =
             productDao.getProductFromSearch(searchKey, category)
+
+    fun getFile(filename: String) =
+            productDao.getFileByName(filename)
 }
 

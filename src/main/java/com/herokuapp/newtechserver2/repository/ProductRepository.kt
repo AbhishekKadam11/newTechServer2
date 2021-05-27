@@ -2,12 +2,19 @@ package com.herokuapp.newtechserver2.repository
 
 import com.herokuapp.newtechserver2.data.ProductDescription
 import com.herokuapp.newtechserver2.data.Products
+//import org.springframework.data.mongodb.gridfs.GridFsOperations
+//import org.springframework.data.mongodb.gridfs.GridFsTemplate
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.data.mongodb.repository.Query
 import org.springframework.stereotype.Repository
 
+
 @Repository
 interface ProductRepository : MongoRepository<Products, Any> {
+
+//    val gridFsTemplate: GridFsTemplate?
+//
+//    val gridOperations: GridFsOperations?
 
     fun findByBrandLike(brand: String): List<Products>
 
@@ -27,4 +34,5 @@ interface ProductRepository : MongoRepository<Products, Any> {
 
     @Query("{'\$or' : [{'title': {\$regex : ?0, \$options: 'i'},'brand': {\$regex : ?0, \$options: 'i'}}], \$and: [{ 'category': {\$in: ?1} }]}")
     fun findByCategoryQuery(searchKey: String, category: Array<String>): List<Products>
+
 }

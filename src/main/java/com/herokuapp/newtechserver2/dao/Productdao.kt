@@ -2,17 +2,20 @@ package com.herokuapp.newtechserver2.dao
 
 import com.google.gson.*
 import com.herokuapp.newtechserver2.Newtechserver2Application
-import com.herokuapp.newtechserver2.data.DashboardProducts
-import com.herokuapp.newtechserver2.data.ProductDescription
-import com.herokuapp.newtechserver2.data.Products
+import com.herokuapp.newtechserver2.data.*
+import com.herokuapp.newtechserver2.repository.FileDataRepository
+import com.herokuapp.newtechserver2.repository.FileRepository
 import com.herokuapp.newtechserver2.repository.ProductRepository
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.boot.configurationprocessor.json.JSONObject
 import org.springframework.stereotype.Component
+import java.util.*
 import kotlin.collections.ArrayList
 
 @Component
-class ProductDao( private val productRepository: ProductRepository )  {
+class ProductDao( private val productRepository: ProductRepository, private val fileRepository: FileRepository,
+                  private val fileDataRepository: FileDataRepository)  {
 
     private val logger = LoggerFactory.getLogger(Newtechserver2Application::class.java)
     var dashboardProduct = JSONObject()
@@ -118,6 +121,22 @@ class ProductDao( private val productRepository: ProductRepository )  {
     }
 
 
+    fun getFileByName(filename: String): List<String> {
+        try {
+            val file = fileRepository.findByFilename(filename)
+//            val selectfile = gson.toJson(file[0])
+//            val data = fileDataRepository.findById(file[0])
+            val listOfStrings = Gson().fromJson(file.toString(), Array<JsonElement>::class.java)
+            val asMap = Gson().fromJson(listOfStrings[0], mutableMapOf<String, Any>().javaClass)
+
+//            val fid =asMap['_id']
+            logger.info(asMap.toString())
+            return listOf("test")
+        } catch ( e: Exception) {
+            logger.info(e.toString())
+            return listOf("test")
+        }
+    }
 
 
 

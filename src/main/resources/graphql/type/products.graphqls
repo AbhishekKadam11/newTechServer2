@@ -12,8 +12,14 @@ type Products {
        arrivaldate: String
 }
 
-type ProductDescription {
-        image: String
-        data: Products
-        imagearray: String
+#type ProductDescription {
+#        image: String
+#        data: Products
+#        imagearray: String
+#}
+
+type Files {
+    id: ID!
+    filename: Products
+
 }
