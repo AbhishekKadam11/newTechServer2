@@ -1,4 +1,5 @@
 FROM openjdk:11-jdk AS MAVEN_BUILD
+ARG MAVEN_VERSION=3.8.1
 
 MAINTAINER Abhishek Kadam
 
