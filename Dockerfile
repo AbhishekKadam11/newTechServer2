@@ -1,4 +1,4 @@
-FROM maven:3.5.2-jdk-9-alpine AS MAVEN_BUILD
+FROM openjdk:11-jdk AS MAVEN_BUILD
 
 MAINTAINER Abhishek Kadam
 
