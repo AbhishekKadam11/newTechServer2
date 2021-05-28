@@ -1,5 +1,4 @@
-FROM openjdk:11-jdk AS MAVEN_BUILD
-ARG MAVEN_VERSION=3.8.1
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
 
 MAINTAINER Abhishek Kadam
 
