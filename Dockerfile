@@ -8,6 +8,8 @@ COPY src /build/src/
 WORKDIR /build/
 RUN mvn package
 
+EXPOSE 8080
+
 FROM openjdk:8-jre-alpine
 
 COPY --from=MAVEN_BUILD /build/target/newtechserver2-0.0.1-SNAPSHOT.jar /build/target/newtechserver2-0.0.1-SNAPSHOT.jar
